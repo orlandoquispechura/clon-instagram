@@ -1,7 +1,6 @@
 // window._ = require('lodash');
-import _ from 'lodash';
+import _ from "lodash";
 window._ * _;
-
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -9,12 +8,12 @@ window._ * _;
  * code may be modified to fit the specific needs of your application.
  */
 
-import '@popperjs/core'
+import "@popperjs/core";
 
 // const bootstrap = require('bootstrap')
-import * as bootstrap from 'bootstrap';
+import * as bootstrap from "bootstrap";
 
-window.bootstrap = bootstrap
+window.bootstrap = bootstrap;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -24,7 +23,9 @@ window.bootstrap = bootstrap
 
 window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// import axios from "axios";
+
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

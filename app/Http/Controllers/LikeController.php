@@ -68,7 +68,7 @@ class LikeController extends Controller
             ]);
         } else {
             return response()->json([
-                'mensage' => 'EL dislike ya existe!'
+                'mensage' => 'EL dislike no existe!'
             ]);
         }
     }

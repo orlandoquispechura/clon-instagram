@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-jet-nav-link href="{{ route('home.dash.index') }}" :active="request()->routeIs('home.dash.index')">
+                <x-jet-nav-link href="/" :active="request()->routeIs('/')">
                     {{ __('Photogenic') }}
                 </x-jet-nav-link>
             </ul>
@@ -67,11 +67,12 @@
                 <!-- Settings Dropdown -->
                 @auth
 
-                    <li class="nav-item"><a href="{{ route('home.dash.index')}}" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="{{ route('admin.user.index')}}" class="nav-link">Personas</a></li>
-                    <li class="nav-item pr-5"><a href="{{route('admin.like.index')}}" class="nav-link">Favoritas</a></li>
-                    <li class="nav-item pr-5"><a href="{{route('admin.image.create')}}" class="nav-link">Subir imágen</a></li>
-               
+                    <li class="nav-item"><a href="{{ route('home.dash.index') }}" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link">Personas</a></li>
+                    <li class="nav-item pr-5"><a href="{{ route('admin.like.index') }}" class="nav-link">Favoritas</a></li>
+                    <li class="nav-item pr-5"><a href="{{ route('admin.image.create') }}" class="nav-link">Subir imágen</a>
+                    </li>
+
                     <x-jet-dropdown id="settingsDropdown">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())

@@ -51,8 +51,8 @@ Route::post('comment/store', [CommentController::class, 'store'])->name('admin.c
 Route::get('comment/delete/{id}', [CommentController::class, 'delete'])->name('admin.comment.delete');
 
 
-Route::get('like/{id}', [LikeController::class, 'like'])->name('admin.like.like');
-Route::get('dislike/{id}', [LikeController::class, 'dislike'])->name('admin.like.dislike');
+Route::get('like/{image_id}', [LikeController::class, 'like'])->name('admin.like.like');
+Route::get('dislike/{image_id}', [LikeController::class, 'dislike'])->name('admin.like.dislike');
 
 
 Route::get('likes', [LikeController::class, 'index'])->name('admin.like.index');

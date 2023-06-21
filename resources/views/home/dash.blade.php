@@ -34,8 +34,8 @@
                             </a>
                         </div>
                         <div class="card-body p-0">
-                            <div style="max-height: 400px; overflow: hidden;">
-                                <img style="width: 100%; height: 100%; overflow: hidden; "
+                            <div style="height: 400px; overflow: hidden;">
+                                <img style="width:100%" class="img-fluid"
                                     src="{{ route('admin.image.file', ['img' => $img->ruta_imagen]) }}" alt=" logo ">
                             </div>
                             <div style="padding: 3px 15px">
@@ -55,13 +55,15 @@
                                 @if ($user_like)
                                     <img style="width: 20px; cursor:pointer;" data-id="{{ $img->id }}"
                                         src="{{ asset('icons/heart-red.png') }}" alt="icon de me gusta"
-                                        class="icon-like">
+                                        class="icon-dislike">
                                 @else
                                     <img style="width: 20px; cursor:pointer;" data-id="{{ $img->id }}"
                                         src="{{ asset('icons/heart-black.png') }}" alt="icon sin me gusta"
-                                        class="icon-dislike">
+                                        class="icon-like">
                                 @endif
-                                <span style="font-size: 0.6rem; margin-right: 5px;"> {{ count($img->likes) }}</span>
+                                <span style="font-size: 0.6rem; margin-right: 5px;" id="contar_like">
+                                    {{ count($img->likes) }}</span>
+
                                 <a href="{{ route('admin.image.show', $img->id) }}"
                                     class="btn btn-sm btn-light fw-bold">comentarios
                                     ({{ count($img->comments) }})
@@ -71,7 +73,7 @@
                     </div>
                 </div>
             @endforeach
-            {{ $images->links() }}
+            <span class="d-flex justify-content-center">{{ $images->links() }}</span>
         </div>
     </div>
 </x-app-layout>
@@ -79,23 +81,27 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script>
-    var url = 'http://localhost:8000';
+    const url = 'http://localhost:8000';
 
     window.addEventListener("load", function() {
 
         function like() {
             $('.icon-like').unbind('click').click(function() {
                 console.log('like');
-                $(this).addClass('icon-dislike').removeClass('btn-like');
+                $(this).addClass('icon-like').removeClass('btn-like');
                 $(this).attr('src', 'icons/heart-red.png');
 
                 $.ajax({
                     url: url + '/like/' + $(this).data('id'),
                     type: 'GET',
+                    header: {
+                        "Content-Type": "aplication/json"
+                    },
                     success: function(response) {
                         console.log(response);
                         if (response.like) {
-                            console.log('like');
+                            let contar_like = document.getElementById('contar_like')
+                            contar_like++;
                         } else {
                             console.log('no like');
                         }
